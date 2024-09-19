@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private Ball ball;
-    [SerializeField] private float speed = 5;
-    [SerializeField] private Rigidbody2D rb;
+    private readonly float speed = GameManager.playerSpeed;
+    private Rigidbody2D rb;
 
     private void Awake()
     {

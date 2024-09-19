@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
 
-    [SerializeField] private Ball ball;
-    [SerializeField] private float speed;
+    [NonSerialized] public Ball ball;
+    public float speed;
 
     private void Update()
     {
