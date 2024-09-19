@@ -29,9 +29,4 @@ public class SceneLoader : MonoBehaviour
         }
         DontDestroyOnLoad(this);
     }
-
-    public void LoadGame()
-    {
-        SceneManager.LoadScene("GameScene");
-    }
 }

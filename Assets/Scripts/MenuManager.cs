@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
@@ -15,6 +16,10 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         loadButton.interactable = false;
+    }
+    public void LoadGame()
+    {
+        SceneManager.LoadScene("GameScene");
     }
 
     public void SelectEasyMode()

@@ -2394,8 +2394,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2056460992}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+      - m_Target: {fileID: 1562615285}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:
@@ -2488,7 +2488,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25d8f4473f7d8f47a7a18ed4a64a316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
