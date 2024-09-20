@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
 {
 
     [NonSerialized] public Ball ball;
-    public float speed;
+    public float speed = 5;
 
     private void Update()
     {

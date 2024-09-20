@@ -2101,6 +2101,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25d8f4473f7d8f47a7a18ed4a64a316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 3
+  matchDuriation: 120
+  ballSpeedMultiplayer: 100
+  playerPaddleSize: 2
+  enemyPaddleSize: 2
+  playerPaddleSpeed: 1
+  enemyPaddleSpeed: 1
 --- !u!4 &1094630137
 Transform:
   m_ObjectHideFlags: 0
@@ -3476,6 +3483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1657ab8737f678489d435f9c98528e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2104799908}
   playerScoreText: {fileID: 1899021572}
   enemyScoreText: {fileID: 1591112306}
   timerText: {fileID: 1851462335}
@@ -3530,6 +3538,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6b5dfda1fe2a54bbeff212f365f0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  speed: 5
 --- !u!61 &2104799909
 BoxCollider2D:
   m_ObjectHideFlags: 0

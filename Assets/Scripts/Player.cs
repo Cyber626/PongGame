@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private readonly float speed = GameManager.playerSpeed;
+    [SerializeField] private GameManager gameManager;
+    public float speed = 5;
     private Rigidbody2D rb;
 
     private void Awake()

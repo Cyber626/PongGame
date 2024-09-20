@@ -8,15 +8,12 @@ public class Ball : MonoBehaviour
 
     [SerializeField] private float xForce, yForce;
     [SerializeField] private GameManager manager;
+    public float ballSpeedMultiplayer = 1;
     private Rigidbody2D rb;
     
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-    }
-    private void Start()
-    {
-        StartCoroutine(StartFromCenter());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,7 +29,7 @@ public class Ball : MonoBehaviour
         StartCoroutine(StartFromCenter());
     }
 
-    private IEnumerator StartFromCenter()
+    public IEnumerator StartFromCenter()
     {
         transform.position = Vector3.zero;
         rb.velocity = Vector3.zero;
@@ -42,6 +39,6 @@ public class Ball : MonoBehaviour
 
         yield return new WaitForSeconds(.5f);
 
-        rb.AddForce(new Vector2(xForce * Mathf.Sign(xDir), yForce * Mathf.Sign(yDir)));
+        rb.AddForce(new Vector2(xForce * ballSpeedMultiplayer * Mathf.Sign(xDir), yForce * ballSpeedMultiplayer * Mathf.Sign(yDir)));
     }
 }

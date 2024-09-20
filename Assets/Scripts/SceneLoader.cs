@@ -13,9 +13,16 @@ public class SceneLoader : MonoBehaviour
         EasyAI,
         NormalAI,
         HardAI,
+        CustomHuman,
+        CustomAI,
     }
 
-    [NonSerialized] public EnemyType enemyType = EnemyType.HardAI;
+    // Custom settings
+    public EnemyType enemyType = EnemyType.HardAI;
+    public int matchDuriation = 120;
+    public int ballSpeedMultiplayer = 100;
+    public float playerPaddleSize = 2, playerPaddleSpeed = 1;
+    public float enemyPaddleSize = 2, enemyPaddleSpeed = 1;
 
     private void Awake()
     {

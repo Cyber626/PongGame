@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPlayer : MonoBehaviour
 {
-    private readonly float speed = GameManager.playerSpeed;
+    public float speed = 5;
     private Rigidbody2D rb;
 
     private void Awake()

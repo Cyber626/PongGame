@@ -8,10 +8,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private Player player;
     [SerializeField] private TextMeshProUGUI playerScoreText, enemyScoreText, timerText;
     [SerializeField] private Ball ballInstance;
     [SerializeField] private GameObject enemyPaddle, endGameMenu, pauseMenu;
-    public static readonly float playerSpeed = 5;
     public float matchTimeInSeconds = 120;
 
 
@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         playerScore = 0;
         enemyScore = 0;
         playerScoreText.text = playerScore.ToString();
@@ -30,6 +31,31 @@ public class GameManager : MonoBehaviour
         {
             enemyPaddle.AddComponent<EnemyPlayer>();
         }
+        else if (SceneLoader.Instance.enemyType == SceneLoader.EnemyType.CustomHuman || SceneLoader.Instance.enemyType == SceneLoader.EnemyType.CustomAI)
+        {
+            // General custom settings apply
+            matchTimeInSeconds = SceneLoader.Instance.matchDuriation;
+            ballInstance.ballSpeedMultiplayer = SceneLoader.Instance.ballSpeedMultiplayer / 100f;
+            player.transform.localScale = new(player.transform.localScale.x,
+                SceneLoader.Instance.playerPaddleSize, player.transform.localScale.z);
+            player.speed = player.speed * SceneLoader.Instance.playerPaddleSpeed;
+
+            if (SceneLoader.Instance.enemyType == SceneLoader.EnemyType.CustomHuman)
+            {
+                EnemyPlayer enemyPlayer = enemyPaddle.AddComponent<EnemyPlayer>();
+                enemyPlayer.transform.localScale = new(enemyPlayer.transform.localScale.x,
+                    SceneLoader.Instance.enemyPaddleSize, enemyPlayer.transform.localScale.z);
+                enemyPlayer.speed = enemyPlayer.speed * SceneLoader.Instance.enemyPaddleSpeed;
+            }
+            else
+            {
+                EnemyController enemyController = enemyPaddle.AddComponent<EnemyController>();
+                enemyController.ball = ballInstance;
+                enemyController.transform.localScale = new(enemyController.transform.localScale.x,
+                    SceneLoader.Instance.enemyPaddleSize, enemyController.transform.localScale.z);
+                enemyController.speed = enemyController.speed * SceneLoader.Instance.enemyPaddleSpeed;
+            }
+        }
         else
         {
             EnemyController enemyController = enemyPaddle.AddComponent<EnemyController>();
@@ -38,6 +64,7 @@ public class GameManager : MonoBehaviour
             else if (SceneLoader.Instance.enemyType == SceneLoader.EnemyType.NormalAI) enemyController.speed = 6;
             else if (SceneLoader.Instance.enemyType == SceneLoader.EnemyType.HardAI) enemyController.speed = 7;
         }
+        StartCoroutine(ballInstance.StartFromCenter());
     }
 
     private void Update()
@@ -69,7 +96,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(1);
     }
 
     public void ToMainMenu()
