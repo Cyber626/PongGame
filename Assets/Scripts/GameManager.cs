@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Player player;
-    [SerializeField] private TextMeshProUGUI playerScoreText, enemyScoreText, timerText;
+    [SerializeField] private TextMeshProUGUI playerScoreText, enemyScoreText, timerText, enemyPlayerControlText;
     [SerializeField] private Ball ballInstance;
     [SerializeField] private GameObject enemyPaddle, endGameMenu, pauseMenu;
     public float matchTimeInSeconds = 120;
@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         if (SceneLoader.Instance.enemyType == SceneLoader.EnemyType.Human)
         {
             enemyPaddle.AddComponent<EnemyPlayer>();
+            enemyPlayerControlText.gameObject.SetActive(true);
         }
         else if (SceneLoader.Instance.enemyType == SceneLoader.EnemyType.CustomHuman || SceneLoader.Instance.enemyType == SceneLoader.EnemyType.CustomAI)
         {
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
 
             if (SceneLoader.Instance.enemyType == SceneLoader.EnemyType.CustomHuman)
             {
+                enemyPlayerControlText.gameObject.SetActive(true);
                 EnemyPlayer enemyPlayer = enemyPaddle.AddComponent<EnemyPlayer>();
                 enemyPlayer.transform.localScale = new(enemyPlayer.transform.localScale.x,
                     SceneLoader.Instance.enemyPaddleSize, enemyPlayer.transform.localScale.z);
